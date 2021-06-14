@@ -24,12 +24,12 @@ const Navigation = () => {
 	};
 	return (
 		<Menu className={menuStatus}>
-			{/* <NavLogo bg="#222" direction="right" cover to="/" duration={1}>
-				<h2>Andy Hall Photographer</h2>
-			</NavLogo> */}
-			<NavLogo to="/">
+			<NavLogo bg="#222" direction="right" cover to="/" duration={1}>
 				<h2>Andy Hall Photographer</h2>
 			</NavLogo>
+			{/* <NavLogo to="/">
+				<h2>Andy Hall Photographer</h2>
+			</NavLogo> */}
 			{/* <StaticImage
 					width={245}
 					height={20}
@@ -37,7 +37,7 @@ const Navigation = () => {
 					alt="A dinosaur"
 					placeholder="blurred"
 				/> */}
-			<Nav>
+			<Nav className={menuStatus}>
 				<ul>
 					{navItems.map((link, idx) => {
 						if (link.includes('#') === true) {
@@ -62,10 +62,10 @@ const Navigation = () => {
 							return (
 								<li key={`${idx} + wdd24d`}>
 									<AniLink2
-										// bg="#222"
-										// direction="right"
-										// cover
-										// duration={1}
+										bg="#222"
+										direction="right"
+										cover
+										duration={1}
 										className={linkStatus === idx ? 'is-active' : ''}
 										to={`/${link
 											.replace(/[^\w\s#]/, '')
@@ -135,11 +135,10 @@ const Menu = styled.div`
 		color: ${colors.white};
 	}
 `;
-const Nav = styled.div`
-	padding-left: 16vw;
+const Nav = styled.nav`
 	position: absolute;
 	top: 50%;
-	//right: 0;
+	right: 0;
 	width: 60%;
 	text-align: right;
 	font-size: 0;
@@ -148,18 +147,11 @@ const Nav = styled.div`
 	-ms-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
-	a {
-		display: block;
-	}
 	@media ${media.large} {
 		font-size: 14px;
 		line-height: 17.5px;
 		font-size: 1.4rem;
 		line-height: 1.75rem;
-		a {
-			transform: rotateZ(-2deg);
-			display: block;
-		}
 	}
 	@media ${media.xLarge} {
 		display: flex;
@@ -198,8 +190,6 @@ const Nav = styled.div`
 		display: table;
 		table-layout: auto;
 		width: 100%;
-		padding-left: 10px;
-		clip-path: polygon(0 0%, 100% 0%, 102% 100%, 1% 100%);
 		li {
 			display: table-cell;
 			text-align: center;
@@ -321,23 +311,17 @@ const Nav = styled.div`
 		}
 		& a {
 			flex: 1;
-			justify-content: flex-start;
+			justify-content: center;
 			align-items: center;
 			font-size: 26px;
 			line-height: 32.5px;
-			font-size: 8.6rem;
+			font-size: 2.6rem;
 			line-height: 3.25rem;
 			display: flex;
 		}
-		@media ${media.xLarge} {
-			& a {
-				font-size: 15vw;
-				color: ${colors.black700};
-			}
-		}
 	}
 `;
-const NavLogo = styled(Link)`
+const NavLogo = styled(AniLink)`
 	//vertical-align: middle;
 	border-bottom: 2px solid transparent;
 	color: ${colors.navigationLinks};
@@ -375,7 +359,7 @@ const NavLogo = styled(Link)`
 	}
 `;
 
-const AniLink2 = styled(Link)`
+const AniLink2 = styled(AniLink)`
 	font-weight: normal;
 	padding: 10px 0;
 	border-bottom: 2px solid transparent;

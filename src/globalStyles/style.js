@@ -58,10 +58,6 @@ const GlobalCss = () => {
 						margin: 0;
 						padding: 0;
 					}
-					nav {
-						font-family: system-ui;
-						letter-spacing: 1.2px;
-					}
 					.boci img {
 						max-width: 100%;
 						width: 100%;
