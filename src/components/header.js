@@ -43,8 +43,8 @@ const Header = () => {
 				</HeaderItem>
 
 				<GalleryWrap>
-					<GalleryBox ref={myRef} />
 					<Gallery>
+						<GalleryBox ref={myRef} />
 						{pI.colOne.edges.map((image, idx) => {
 							return (
 								<ImageBlock key={`${idx}sex2`}>
