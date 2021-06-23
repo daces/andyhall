@@ -375,7 +375,10 @@ const NavLogo = styled(AniLink)`
 	@media ${media.largeMax} {
 		h2 {
 			background: #fff;
-			box-shadow: 0 0 20px 0px #cacaca;
+			box-shadow: 0 0 20px 0px #ededed;
+		}
+		.image-gal & h2 {
+			box-shadow: none;
 		}
 	}
 `;
@@ -393,6 +396,12 @@ const NavTitle = styled.h2`
 		z-index: 4;
 		padding: 3vw;
 		padding-top: 0;
+		display: inline-block;
+	}
+	@media ${media.largeMax} {
+		.image-gal & {
+			padding-bottom: 0;
+		}
 	}
 `;
 const AniLink2 = styled(AniLink)`

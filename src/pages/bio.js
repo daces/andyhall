@@ -58,6 +58,7 @@ export default Bio;
 const Wrap = styled.div`
 	max-width: 70vw;
 	margin-left: auto;
+	margin-top: 60px;
 	@media ${media.xLarge} {
 		margin-left: 17vw;
 		max-width: 100%;
@@ -66,5 +67,8 @@ const Wrap = styled.div`
 	}
 	h1 {
 		font-size: 12vw;
+	}
+	p {
+		line-height: 1.6;
 	}
 `;
