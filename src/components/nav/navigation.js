@@ -25,7 +25,7 @@ const Navigation = () => {
 	return (
 		<Menu className={menuStatus}>
 			<NavLogo bg="#222" direction="right" cover to="/" duration={1}>
-				<h2>Andy Hall Photographer</h2>
+				<NavTitle>Andy Hall Photographer</NavTitle>
 			</NavLogo>
 			{/* <NavLogo to="/">
 				<h2>Andy Hall Photographer</h2>
@@ -109,11 +109,13 @@ const Menu = styled.div`
 	margin: 0;
 	padding: 30px 0 30px 28px;
 	background-color: ${colors.navigation};
-	margin-left: 8vw;
 	@media ${media.xLarge} {
 		position: absolute;
 		padding: 20px 0 20px 10px;
 		background: none;
+		.image-gal & {
+			background-color: ${colors.navigation};
+		}
 		&.is-active nav {
 			-webkit-transform: translate3d(0, 0, 0);
 			-moz-transform: translate3d(0, 0, 0);
@@ -134,6 +136,10 @@ const Menu = styled.div`
 		background: ${colors.black700};
 		color: ${colors.white};
 	}
+	.image-gal & h2 {
+		background: ${colors.navigation};
+		color: ${colors.navigationLinks};
+	}
 `;
 const Nav = styled.nav`
 	position: absolute;
@@ -142,6 +148,7 @@ const Nav = styled.nav`
 	width: 60%;
 	text-align: right;
 	font-size: 0;
+	z-index: 3;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
@@ -319,6 +326,11 @@ const Nav = styled.nav`
 			line-height: 3.25rem;
 			display: flex;
 		}
+		@media screen and ${media.smallMax} {
+			& a {
+				font-size: 14vw;
+			}
+		}
 	}
 `;
 const NavLogo = styled(AniLink)`
@@ -342,14 +354,14 @@ const NavLogo = styled(AniLink)`
 		position: absolute;
 		top: 16vh;
 		top: 0;
-		left: -2px;
+		left: 0;
 		bottom: 0;
 		height: 100vh;
 		z-index: 3;
-		padding: 0 2vw;
+		padding: 0 6vw;
 		padding-top: 18vh;
 		// margin-left: -5vw;
-		transform: translateX(-50%);
+		//transform: translateX(-50%);
 	}
 	@media ${media.largeMax} {
 		h2 {
@@ -358,7 +370,23 @@ const NavLogo = styled(AniLink)`
 		}
 	}
 `;
-
+const NavTitle = styled.h2`
+	font-family: reenie-beanie, sans-serif;
+	font-size: 2em;
+	.image-gal & {
+		background-color: ${colors.navigation};
+		height: max-content;
+		padding-bottom: 4vh;
+		writing-mode: unset;
+		position: relative;
+		top: 12px;
+		left: 40px;
+		bottom: 0;
+		z-index: 3;
+		padding: 3vw;
+		padding-top: 0;
+	}
+`;
 const AniLink2 = styled(AniLink)`
 	font-weight: normal;
 	padding: 10px 0;
@@ -455,24 +483,24 @@ const MobiWrap = styled.div`
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: 0;
+	left: 10px;
 	z-index: 9;
 
 	&.is-active span {
-		color: ${colors.white};
+		color: ${colors.navigationLinks};
 	}
 	.menu-btn__open,
 	.menu-btn__close {
 		position: relative;
 		top: 8vh;
-		right: 18px;
+		left: 0;
 		text-transform: lowercase;
 	}
 `;
 const MobiBtn1 = styled.a`
 	position: absolute;
 	top: 24px;
-	right: 24px;
+	left: 4px;
 	width: 28px;
 	height: 28px;
 	display: inline-block;
@@ -493,11 +521,11 @@ const MobiBtn1 = styled.a`
 		transition: transform ease 0.3s;
 		border-radius: 50%;
 		overflow: hidden;
-		transform: scale(1.5);
+		transform: scale(1.9);
 	}
 
-	&:hover::after {
-		transform: scale(0.4);
+	&.is-active::after {
+		transform: scale(1);
 	}
 
 	&:active {

@@ -40,7 +40,7 @@ const GlobalCss = () => {
 					h4,
 					h5,
 					h6 {
-						font-family: 'Satisfy', georgia, serif;
+						font-family: reenie-beanie, georgia, serif;
 						font-weight: normal;
 						word-wrap: break-word;
 						font-kerning: normal;
@@ -74,6 +74,7 @@ const GlobalCss = () => {
 							skew(0deg, 0deg);
 						transform-style: preserve-3d;
 						will-change: transform;
+						z-index: 999;
 					}
 					.tl-edges {
 						overflow: hidden !important;

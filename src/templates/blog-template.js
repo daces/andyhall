@@ -34,8 +34,8 @@ class BlogPost extends Component {
 			return null;
 		});
 		return (
-			<Wrap>
-				<Layout title="Hare & Tortoise" />
+			<Wrap className="image-gal">
+				<Layout title="Andy Hall" />
 				<Navigation />
 
 				{/* {edges.map((edge, idx) => {
@@ -43,7 +43,7 @@ class BlogPost extends Component {
 				})} */}
 
 				<Box>
-					<Gallery
+					<Gallery2
 						photos={galleryPhotos}
 						direction="column"
 						margin={5}
@@ -64,8 +64,13 @@ BlogPost.propTypes = {
 export default BlogPost;
 
 const Wrap = styled.div`
-	width: 82%;
 	margin-left: auto;
+	padding-top: 10vh;
+`;
+const Gallery2 = styled(Gallery)`
+	img:first-of-type {
+		padding-left: 15vw;
+	}
 `;
 export const pageQuery = graphql`
 	query MyQuery($slug: String) {

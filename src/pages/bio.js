@@ -59,8 +59,10 @@ const Wrap = styled.div`
 	max-width: 70vw;
 	margin-left: auto;
 	@media ${media.xLarge} {
-		margin-left: 18vw;
+		margin-left: 17vw;
 		max-width: 100%;
+		padding-right: 4vw;
+		text-align: justify;
 	}
 	h1 {
 		font-size: 12vw;

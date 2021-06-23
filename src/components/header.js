@@ -103,6 +103,8 @@ const Title = styled.h1`
 	background: #222;
 	color: #eee;
 	z-index: 9;
+
+	font-family: reenie-beanie, sans-serif;
 	@media ${media.xLarge} {
 		position: relative;
 		top: 0;
@@ -119,6 +121,7 @@ const Description = styled.p`
 	span {
 		font-size: 15vw;
 		display: block;
+		font-family: reenie-beanie, sans-serif;
 	}
 	@media ${media.smallMax} {
 		margin: 41vh auto;
