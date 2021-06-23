@@ -1,5 +1,6 @@
 import React from 'react';
 import { Global, css } from '@emotion/react';
+import { font } from '../defaults/fonts';
 // import { colors } from '../defaults/styles';
 const GlobalCss = () => {
 	return (
@@ -15,7 +16,8 @@ const GlobalCss = () => {
 					}
 					html {
 						background: #eee;
-						font-family: 'Source Serif 4 Display';
+						${font.heading};
+						//font-family: 'Source Serif 4 Display';
 						font-size: 62.5%;
 						line-height: 62.5%;
 						padding: 0;
@@ -40,7 +42,7 @@ const GlobalCss = () => {
 					h4,
 					h5,
 					h6 {
-						font-family: reenie-beanie, georgia, serif;
+						font-family: 'Source Serif 4 Display';
 						font-weight: normal;
 						word-wrap: break-word;
 						font-kerning: normal;

@@ -5,6 +5,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 import { colors } from '../../defaults/styles';
 import { media } from '../../defaults/media';
+import { font } from '../../defaults/fonts';
 
 const navItems = ['#Projects', '#contact', 'bio', 'prints', 'zines'];
 
@@ -22,6 +23,8 @@ const Navigation = () => {
 		setlinkStatus(e);
 		console.log(e);
 	};
+
+	console.log(font.heading);
 	return (
 		<Menu className={menuStatus}>
 			<NavLogo bg="#222" direction="right" cover to="/" duration={1}>
@@ -319,7 +322,7 @@ const Nav = styled.nav`
 		& a {
 			flex: 1;
 			justify-content: center;
-			align-items: center;
+			align-items: flex-end;
 			font-size: 26px;
 			line-height: 32.5px;
 			font-size: 2.6rem;
@@ -328,7 +331,7 @@ const Nav = styled.nav`
 		}
 		@media screen and ${media.smallMax} {
 			& a {
-				font-size: 14vw;
+				font-size: 12vw;
 			}
 		}
 	}
@@ -357,14 +360,17 @@ const NavLogo = styled(AniLink)`
 		left: 0;
 		bottom: 0;
 		height: 100vh;
-		z-index: 3;
+		z-index: 4;
 		padding: 0 2vw;
 		padding-top: 18vh;
 		// margin-left: -5vw;
 		//transform: translateX(-50%);
 	}
 	@media screen and ${media.smallMax} {
-		padding: 0 6vw;
+		h2 {
+			padding: 0 6vw;
+			padding-top: 18vh;
+		}
 	}
 	@media ${media.largeMax} {
 		h2 {
@@ -374,7 +380,6 @@ const NavLogo = styled(AniLink)`
 	}
 `;
 const NavTitle = styled.h2`
-	font-family: reenie-beanie, sans-serif;
 	font-size: 2em;
 	.image-gal & {
 		background-color: ${colors.navigation};
@@ -382,10 +387,10 @@ const NavTitle = styled.h2`
 		padding-bottom: 4vh;
 		writing-mode: unset;
 		position: relative;
-		top: 12px;
+		line-height: 1;
 		left: 40px;
 		bottom: 0;
-		z-index: 3;
+		z-index: 4;
 		padding: 3vw;
 		padding-top: 0;
 	}

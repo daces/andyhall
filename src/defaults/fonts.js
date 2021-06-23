@@ -21,10 +21,10 @@ const monoFontStack = [
 	'monospace',
 ];
 
-export default {
+export const font = {
 	sizeSm: '16px',
 	sizeMd: '18px',
 	default: defaultFontStack.join(', '),
-	heading: ['mallory', ...defaultFontStack].join(', '),
 	mono: monoFontStack.join(', '),
+	heading: `font: normal small-caps normal 16px/1.4 ${defaultFontStack.join(', ')}`,
 };
