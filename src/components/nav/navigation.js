@@ -358,10 +358,13 @@ const NavLogo = styled(AniLink)`
 		bottom: 0;
 		height: 100vh;
 		z-index: 3;
-		padding: 0 6vw;
+		padding: 0 2vw;
 		padding-top: 18vh;
 		// margin-left: -5vw;
 		//transform: translateX(-50%);
+	}
+	@media screen and ${media.smallMax} {
+		padding: 0 6vw;
 	}
 	@media ${media.largeMax} {
 		h2 {
