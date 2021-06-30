@@ -6,6 +6,9 @@ import Gallery from 'react-photo-gallery';
 import { Box } from 'theme-ui';
 import styled from 'styled-components';
 import Layout from '../components/layouts/layout';
+import ContactForm from '../components/contactForm';
+import { colors } from '../defaults/styles';
+import Demo from '../components/demo';
 const Zines = () => {
 	const data = useStaticQuery(graphql`
 		query {
@@ -40,7 +43,8 @@ const Zines = () => {
 	return (
 		<>
 			<Layout />
-			<Navigation />
+			<Demo />
+			<Navigation className="page" />
 
 			<Wrap>
 				<h1>Zines</h1>
@@ -54,6 +58,7 @@ const Zines = () => {
 					<Gallery photos={galleryPhotos} direction="column" margin={5} />
 				</Box>
 			</Wrap>
+			<ContactForm />
 		</>
 	);
 };
@@ -62,11 +67,15 @@ export default Zines;
 const Wrap = styled.div`
 	text-align: center;
 	max-width: 70vw;
-	margin-left: auto;
+	margin: auto;
+	background-color: #6b8694;
+	color: #fff;
 	@media ${media.xLarge} {
-		margin-left: 17vw;
 		max-width: 100%;
-		padding-right: 4vw;
+	}
+	padding: 60px ${colors.boxPaddingMd} 0 ${colors.boxPaddingMd};
+	@media screen and ${media.smallMax} {
+		padding: 60px ${colors.boxPaddingSm} 0 ${colors.boxPaddingSm};
 	}
 	h1 {
 		font-size: 12vw;

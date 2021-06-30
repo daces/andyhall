@@ -53,11 +53,17 @@ export const colors = {
 	darkest: palette.black,
 	primary: palette.green600,
 
-	navigation: '#eeeeee',
-	navigationLinks: palette.black700,
+	navTransparent: 'transparent',
+	navigation: '#607d8b',
+	navigationLinks: palette.white,
 
 	button: palette.green800,
 	buttonShadow: palette.green900,
+
+	boxPaddingSm: '1.5em',
+	boxPaddingMd: '4em',
+
+	aniLink: '#fff',
 
 	get navigationFaded() {
 		return hexToRGBA(this.navigation, 0.95);

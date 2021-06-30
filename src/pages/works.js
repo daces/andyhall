@@ -1,26 +1,26 @@
 import React from 'react';
 import Layout from '../components/layouts/layout';
 import Navigation from '../components/nav/navigation';
+// import Button from '../components/buttons/button';
 
 import Header from '../components/header';
 // import { graphql, useStaticQuery } from 'gatsby';
 // import GallerySection from '../components/gallery';
-import Projects from '../components/projects';
+import WorksList from '../components/works';
 import ContactForm from '../components/contactForm';
-import About from '../components/about';
 import Demo from '../components/demo';
-const Index = () => {
+
+const Works = () => {
 	return (
 		<>
 			<Layout title="Andy Hall Photographer" />
 			<Demo />
 			<Navigation />
 			<Header />
-			<Projects />
-			<About />
+			<WorksList />
 			<ContactForm />
 		</>
 	);
 };
 
-export default Index;
+export default Works;

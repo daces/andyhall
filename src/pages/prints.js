@@ -1,13 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { media } from '../defaults/media';
+import { colors } from '../defaults/styles';
 import Navigation from '../components/nav/navigation';
 import Layout from '../components/layouts/layout';
+import ContactForm from '../components/contactForm';
+import Demo from '../components/demo';
+
 const Prints = () => {
 	return (
 		<>
 			<Layout />
-			<Navigation />
+
+			<Demo />
+			<Navigation className="page" />
 			<Wrap>
 				<h1>PRINT SALES</h1>
 				<p>All prints on this site are for sale</p>
@@ -23,6 +29,7 @@ const Prints = () => {
 				<br />
 				<p>Please contact directly andz.hall@virgin.net</p>
 			</Wrap>
+			<ContactForm />
 		</>
 	);
 };
@@ -31,14 +38,19 @@ export default Prints;
 const Wrap = styled.div`
 	text-align: center;
 	max-width: 70vw;
-	margin-left: auto;
+	margin: auto;
+	background-color: #6b8694;
+	color: #fff;
+	padding: 1em ${colors.boxPaddingMd} 2em ${colors.boxPaddingMd};
+	@media screen and ${media.smallMax} {
+		padding: 1em ${colors.boxPaddingSm} 2em ${colors.boxPaddingSm};
+	}
 	@media ${media.xLarge} {
-		margin-left: 17vw;
 		max-width: 100%;
 		padding-right: 4vw;
 	}
 	h1 {
-		font-size: 12vw;
+		font-size: 6vw;
 		line-height: 1;
 	}
 `;

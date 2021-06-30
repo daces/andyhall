@@ -1,6 +1,7 @@
 import React from 'react';
 import { Global, css } from '@emotion/react';
 import { font } from '../defaults/fonts';
+import { colors } from '../defaults/styles';
 // import { colors } from '../defaults/styles';
 const GlobalCss = () => {
 	return (
@@ -15,7 +16,7 @@ const GlobalCss = () => {
 						box-sizing: border-box;
 					}
 					html {
-						background: #eee;
+						background: ${colors.white};
 						${font.heading};
 						//font-family: 'Source Serif 4 Display';
 						font-size: 62.5%;
@@ -27,6 +28,7 @@ const GlobalCss = () => {
 						overflow-x: hidden;
 					}
 					body {
+						background-color: #6b8694;
 						margin: 0 auto;
 						min-width: 320px;
 						min-height: 100vh;
@@ -68,10 +70,10 @@ const GlobalCss = () => {
 						object-fit: cover;
 						transform-origin: left;
 					}
-					#gatsby-focus-wrapper img {
+					.image-gal #gatsby-focus-wrapper img {
 						transition: transform 0.2s ease-in-out, transform 0.2s ease-in-out;
 					}
-					#gatsby-focus-wrapper img:hover {
+					.image-gal #gatsby-focus-wrapper img:hover {
 						transform: translate3d(-28px, 0px, 0px) scale3d(1.14995, 1.14995, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg)
 							skew(0deg, 0deg);
 						transform-style: preserve-3d;

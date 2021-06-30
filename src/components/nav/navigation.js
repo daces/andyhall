@@ -1,88 +1,58 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 import { colors } from '../../defaults/styles';
 import { media } from '../../defaults/media';
-import { font } from '../../defaults/fonts';
 
-const navItems = ['#Projects', '#contact', 'bio', 'prints', 'zines'];
+let navItems = ['works', 'contact', 'bio', 'prints', 'zines'];
 
-const Navigation = () => {
+const Navigation = (props) => {
 	const [menuStatus, setMenuStatus] = useState('');
 	const [linkStatus, setlinkStatus] = useState('');
 
 	const MenuOpen = () => {
 		menuStatus === 'is-active' ? setMenuStatus('') : setMenuStatus('is-active');
 	};
-	const MenuClose = () => {
-		setMenuStatus('');
-	};
+	// const MenuClose = () => {
+	// 	setMenuStatus('');
+	// };
 	const LinkClick = (e) => {
 		setlinkStatus(e);
 		console.log(e);
 	};
 
-	console.log(font.heading);
 	return (
-		<Menu className={menuStatus}>
-			<NavLogo bg="#222" direction="right" cover to="/" duration={1}>
-				<NavTitle>Andy Hall Photographer</NavTitle>
+		<Menu className={`${menuStatus} ${props.className !== undefined ? props.className : ''}`}>
+			<NavLogo paintDrip hex={colors.aniLink} direction="up" to="/" duration={1}>
+				<NavTitle>Andy Hall</NavTitle>
 			</NavLogo>
-			{/* <NavLogo to="/">
-				<h2>Andy Hall Photographer</h2>
-			</NavLogo> */}
-			{/* <StaticImage
-					width={245}
-					height={20}
-					src="../../../src/images/logo_nav.png"
-					alt="A dinosaur"
-					placeholder="blurred"
-				/> */}
 			<Nav className={menuStatus}>
 				<ul>
 					{navItems.map((link, idx) => {
-						if (link.includes('#') === true) {
-							return (
-								<li key={`${idx} + wdd24d`}>
-									<NavLink
-										className={linkStatus === idx ? 'is-active' : ''}
-										to={`/${link
-											.replace(/[^\w\s#]/, '')
-											.toLowerCase()
-											.replace(/\s/, '-')}`}
-										onClick={(e) => {
-											LinkClick(idx);
-											MenuClose();
-										}}
-									>
-										{link}
-									</NavLink>
-								</li>
-							);
-						} else
-							return (
-								<li key={`${idx} + wdd24d`}>
-									<AniLink2
-										bg="#222"
-										direction="right"
-										cover
-										duration={1}
-										className={linkStatus === idx ? 'is-active' : ''}
-										to={`/${link
-											.replace(/[^\w\s#]/, '')
-											.toLowerCase()
-											.replace(/\s/, '-')}/`}
-										onClick={(e) => {
-											LinkClick(idx);
-											MenuClose();
-										}}
-									>
-										{link}
-									</AniLink2>
-								</li>
-							);
+						return (
+							<li key={`${idx} + wdd24d`}>
+								<AniLink2
+									paintDrip
+									hex={colors.aniLink}
+									direction="up"
+									duration={1}
+									className={linkStatus === idx ? 'is-active' : ''}
+									onClick={(e) => {
+										LinkClick(idx);
+										//MenuClose();
+									}}
+									to={`/${link}`}
+									// to={`/${link
+									// 	.replace(/[^\w\s#]/, '')
+									// 	.toLowerCase()
+									// 	.replace(/\s/, '-')}`}
+								>
+									{link}
+								</AniLink2>
+							</li>
+						);
 					})}
 				</ul>
 			</Nav>
@@ -104,21 +74,19 @@ const Navigation = () => {
 
 export default Navigation;
 const Menu = styled.div`
-	position: fixed;
-	top: 0;
+	position: absolute;
+	top: 2em;
 	right: 0;
 	left: 0;
 	z-index: 10;
 	margin: 0;
-	padding: 30px 0 30px 28px;
-	background-color: ${colors.navigation};
+	padding: 30px 0 30px 0;
+	background-color: ${colors.navTransparent};
+	&.page {
+		background-color: #6b8694;
+	}
 	@media ${media.xLarge} {
-		position: absolute;
-		padding: 20px 0 20px 10px;
-		background: none;
-		.image-gal & {
-			background-color: ${colors.navigation};
-		}
+		// position: absolute;
 		&.is-active nav {
 			-webkit-transform: translate3d(0, 0, 0);
 			-moz-transform: translate3d(0, 0, 0);
@@ -135,14 +103,6 @@ const Menu = styled.div`
 			transform: translate3d(0, 0, 0);
 		}
 	}
-	&.is-active h2 {
-		background: ${colors.black700};
-		color: ${colors.white};
-	}
-	.image-gal & h2 {
-		background: ${colors.navigation};
-		color: ${colors.navigationLinks};
-	}
 `;
 const Nav = styled.nav`
 	position: absolute;
@@ -151,7 +111,7 @@ const Nav = styled.nav`
 	width: 60%;
 	text-align: right;
 	font-size: 0;
-	z-index: 3;
+	z-index: -1;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
@@ -192,6 +152,9 @@ const Nav = styled.nav`
 			-o-transform: translateY(-100%);
 			transform: translateY(-100%);
 		}
+		& a {
+			display: inline-block;
+		}
 		a.is-active {
 			border-bottom: 2px solid ${colors.white};
 		}
@@ -200,8 +163,10 @@ const Nav = styled.nav`
 		display: table;
 		table-layout: auto;
 		width: 100%;
+		justify-content: center;
 		li {
-			display: table-cell;
+			display: inline-block;
+			padding: 10px 20px;
 			text-align: center;
 			font-size: 1.4rem;
 			line-height: 1.75rem;
@@ -209,18 +174,12 @@ const Nav = styled.nav`
 	}
 
 	@media ${media.xLarge} {
-		& ul,
-		ul li,
-		& a {
+		& ul {
 			display: flex;
 		}
 		ul {
 			flex-direction: column;
 			height: 100%;
-		}
-		ul li {
-			height: 100%;
-			//opacity: 0;
 		}
 		.is-active li {
 			//opacity: 1;
@@ -322,16 +281,15 @@ const Nav = styled.nav`
 		& a {
 			flex: 1;
 			justify-content: center;
-			align-items: flex-end;
+			align-items: center;
 			font-size: 26px;
-			line-height: 32.5px;
-			font-size: 2.6rem;
-			line-height: 3.25rem;
-			display: flex;
+			line-height: 1;
+			font-size: 2vw;
+			line-height: 1;
 		}
 		@media screen and ${media.smallMax} {
 			& a {
-				font-size: 12vw;
+				font-size: 150%;
 			}
 		}
 	}
@@ -341,7 +299,8 @@ const NavLogo = styled(AniLink)`
 	border-bottom: 2px solid transparent;
 	color: ${colors.navigationLinks};
 	text-decoration: none;
-	text-transform: Capitalize;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
 	h1,
 	h2,
 	h3,
@@ -352,57 +311,22 @@ const NavLogo = styled(AniLink)`
 		padding: 0;
 	}
 	h2 {
-		-webkit-writing-mode: vertical-lr;
-		writing-mode: vertical-lr;
-		position: absolute;
-		top: 16vh;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		height: 100vh;
 		z-index: 4;
-		padding: 0 2vw;
-		padding-top: 18vh;
-		// margin-left: -5vw;
+		padding: 0 0 0 ${colors.boxPaddingMd};
+		line-height: 2.5;
+		//margin-left: 5vw;
 		//transform: translateX(-50%);
 	}
 	@media screen and ${media.smallMax} {
 		h2 {
-			padding: 0 6vw;
-			padding-top: 18vh;
-		}
-	}
-	@media ${media.largeMax} {
-		h2 {
-			background: #fff;
-			box-shadow: 0 0 20px 0px #ededed;
-		}
-		.image-gal & h2 {
-			box-shadow: none;
+			padding: 0 0 0 ${colors.boxPaddingSm};
 		}
 	}
 `;
 const NavTitle = styled.h2`
-	font-size: 2em;
-	.image-gal & {
-		background-color: ${colors.navigation};
-		height: max-content;
-		padding-bottom: 4vh;
-		writing-mode: unset;
-		position: relative;
-		line-height: 1;
-		left: 40px;
-		bottom: 0;
-		z-index: 4;
-		padding: 3vw;
-		padding-top: 0;
-		display: inline-block;
-	}
-	@media ${media.largeMax} {
-		.image-gal & {
-			padding-bottom: 0;
-		}
-	}
+	display: inline-block;
+	font-size: 1em;
+	font-family: sans-serif;
 `;
 const AniLink2 = styled(AniLink)`
 	font-weight: normal;
@@ -411,24 +335,14 @@ const AniLink2 = styled(AniLink)`
 	color: ${colors.navigationLinks};
 	text-decoration: none;
 	text-transform: uppercase;
-	font-family: 'satisfy';
-	font-weight: bold;
-	&.is-active {
+	font-family: sans-serif;
+	padding-bottom: 25px;
+	letter-spacing: 0.2em;
+	.is-active & {
+		border-bottom: 1px solid #7195a6;
 	}
 `;
 
-const NavLink = styled(Link)`
-	font-weight: normal;
-	padding: 10px 0;
-	border-bottom: 2px solid transparent;
-	color: ${colors.navigationLinks};
-	text-decoration: none;
-	text-transform: uppercase;
-	font-family: 'satisfy';
-	font-weight: bold;
-	&.is-active {
-	}
-`;
 // const MobiBtn = styled.a`
 // 	@media ${media.xLarge} {
 // 		display: block;
@@ -494,13 +408,14 @@ const NavLink = styled(Link)`
 // `;
 const MobiWrap = styled.div`
 	@media ${media.xLarge} {
-		display: block;
+		// display: block;
+		display: inline-block;
 	}
 	display: none;
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: 10px;
+	right: 25px;
 	z-index: 9;
 
 	&.is-active span {
@@ -508,32 +423,33 @@ const MobiWrap = styled.div`
 	}
 	.menu-btn__open,
 	.menu-btn__close {
-		position: relative;
+		position: absolute;
 		top: 8vh;
 		left: 0;
 		text-transform: lowercase;
+		color: ${colors.navigationLinks};
 	}
 `;
 const MobiBtn1 = styled.a`
-	position: absolute;
+	//background: #222;
+	// position: absolute;
+	position: relative;
 	top: 24px;
 	left: 4px;
 	width: 28px;
 	height: 28px;
 	display: inline-block;
-	background: #eee;
 	border-radius: 50%;
 	overflow: hidden;
 	transform: translateZ(0);
 	&::after {
 		position: absolute;
 		left: 0;
-		top: 0;
+		top: -1px;
 		right: 0;
 		bottom: 0;
 		content: '';
-		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='38' fill='%2354595f' fill-rule='evenodd'%3E%3Cpath d='M21.5 12.938L25 19l-3.5 6.062h-7L11 19l3.5-6.062z'/%3E%3Cpath d='M18 24h18v1H18zM0 13h18v1H0zm13.67 8.5l9 15.588-.866.5-9-15.588zM14.196.412l9 15.588-.866.5-9-15.588zM13.67 16.5l-9 15.588-.866-.5 9-15.588zM32.196 6.412l-9 15.588-.866-.5 9-15.588z'/%3E%3C/svg%3E")
-			no-repeat center;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='38' fill='%23fff'%3E%3Cpath d='M21.5 12.938L25 19l-3.5 6.062h-7L11 19l3.5-6.062z'/%3E%3Cpath d='M18 24h18v1H18zM0 13h18v1H0zm13.67 8.5l9 15.588-.866.5-9-15.588zM14.196.412l9 15.588-.866.5-9-15.588zM13.67 16.5l-9 15.588-.866-.5 9-15.588zM32.196 6.412l-9 15.588-.866-.5 9-15.588z'/%3E%3C/svg%3E");
 		background-size: cover;
 		transition: transform ease 0.3s;
 		border-radius: 50%;

@@ -42,8 +42,6 @@ module.exports = {
 		'gatsby-plugin-styled-components',
 		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-image',
-		'gatsby-plugin-sharp',
-		'gatsby-transformer-sharp',
 		'gatsby-plugin-transition-link',
 		{
 			resolve: `gatsby-source-filesystem`,
@@ -52,6 +50,24 @@ module.exports = {
 				path: `${__dirname}/src/images`,
 			},
 		},
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `project-images`,
+				path: `${__dirname}/src/images/project-images`,
+			},
+		},
+		'gatsby-transformer-json',
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `data`,
+				path: `${__dirname}/src/images/projects`,
+			},
+		},
+
+		'gatsby-plugin-sharp',
+		'gatsby-transformer-sharp',
 		{
 			resolve: 'gatsby-plugin-web-font-loader',
 			options: {
