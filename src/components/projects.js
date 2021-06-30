@@ -86,9 +86,8 @@ const Content = styled.div`
 		padding: 2em 0 0 ${colors.boxPaddingSm};
 	}
 	@media screen and ${media.mediumMax} {
-		top: 0;
 		left: 0;
-		transform: none;
+		transform: translatey(-50%);
 		padding: 2em 0 0 ${colors.boxPaddingSm};
 	}
 	@media screen and ${media.largeMax} {

@@ -7,7 +7,7 @@ exports.createPages = ({ graphql, actions }) => {
 		resolve(
 			graphql(`
 				{
-					allDirectory {
+					allDirectory(filter: { relativePath: { ne: "projects" } }) {
 						edges {
 							node {
 								relativePath
