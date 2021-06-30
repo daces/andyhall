@@ -75,7 +75,7 @@ const Navigation = (props) => {
 export default Navigation;
 const Menu = styled.div`
 	position: absolute;
-	top: 2em;
+	top: 4em;
 	right: 0;
 	left: 0;
 	z-index: 10;
